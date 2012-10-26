@@ -1,0 +1,13 @@
+This should be automated for remote MySQL access:
+
+1) In etc/mysql/my.cnf set
+
+  bind-address            = 0.0.0.0
+
+2) sudo service mysql restart
+
+3)
+mysql -u root -p << EOF
+GRANT ALL ON *.* to root@'10.0.2.2' identified by 'root';
+flush privileges;
+EOF
